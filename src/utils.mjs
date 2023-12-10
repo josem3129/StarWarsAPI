@@ -4,8 +4,8 @@ async function loadTemplate(path){
     return template
 }
 export async function loadHeaderFooter(){
-    const headerTemplate = await loadTemplate("/templates/header.html")
-    const footerTemplate = await loadTemplate("/templates/footer.html")
+    const headerTemplate = await loadTemplate("./templates/header.html")
+    const footerTemplate = await loadTemplate("./templates/footer.html")
     const headerElement = querySelect("#main-header");
     const footerElement = querySelect("#main-footer");
 
