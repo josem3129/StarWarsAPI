@@ -2,7 +2,7 @@ import { loadHeaderFooter, getParams, querySelect } from "./utils.mjs";
 import infoCard from "./infoCard.mjs";
 import gerExternalAPI from "./outsideResorces.mjs";
 
-loadHeaderFooter();
+// loadHeaderFooter();
 
 const param = getParams("search")
 const element = querySelect("#main-list");

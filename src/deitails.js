@@ -2,7 +2,7 @@ import gerExternalAPI from "./outsideResorces.mjs";
 import { loadHeaderFooter, getParams, querySelect } from "./utils.mjs";
 import listTemplate from "./daetailList.mjs";
 
-loadHeaderFooter();
+// loadHeaderFooter();
 
 const category = getParams("category");
 const element = querySelect("#main-list");

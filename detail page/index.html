@@ -15,10 +15,21 @@
 </head>
 
 <body>
-    <header id="main-header"></header>
+    <header id="main-header">
+        <nav class="nav">
+            <a href="../index.html">
+                <img class="logo" src="./images/icons8-star-wars-512.png" alt="star wars logo">
+            </a>
+            <form onsubmit="event.preventDefault();" role="search">
+                <label for="search">Search for stuff</label>
+                <input id="search" type="search" placeholder="Search..." autofocus required />
+                <button type="submit">Go</button>    
+            </form>
+        </nav>
+    </header>
     <main id="main-list">
     </main>
-    <footer id="main-footer"></footer>
+    <footer id="main-footer">Jose Martinez 2023 WD330</footer>
 </body>
 
 </html>
