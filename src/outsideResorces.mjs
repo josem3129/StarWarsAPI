@@ -91,4 +91,8 @@ export default class gerExternalAPI{
 
         return nameFound;
     }  
+
+    searchName(name){
+
+    }
 }
