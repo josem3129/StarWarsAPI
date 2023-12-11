@@ -2,7 +2,7 @@ export default class templates {
 
     templatePeople(object){
         return `
-        <a href="/info pages/index.html?search=${object.name}">
+        <a href="./info pages/index.html?search=${object.name}">
         <div class="card">
         <h2 class="indent">${object.name}</h2>
         <p class="card-footer"> ${object.birth_year}</p>
@@ -13,7 +13,7 @@ export default class templates {
     }
     templateFilm(object){
         return `
-        <a href="/info pages/index.html?search=${object.title}">
+        <a href="./info pages/index.html?search=${object.title}">
         <div class="card">
         <h2 class="indent">${object.title}</h2>
         <p class="card-footer"> ${object.episode_id}</p>
@@ -23,7 +23,7 @@ export default class templates {
     }
     templateShipVehicle(object){
         return `
-        <a href="/info pages/index.html?search=${object.name}">
+        <a href="./info pages/index.html?search=${object.name}">
         <div class="card">
         <h2 class="indent">${object.name}</h2>
         <p class="card-footer"> ${object.model}</p>
@@ -33,7 +33,7 @@ export default class templates {
     }
     templateSpecies(object){
         return `
-        <a href="/info pages/index.html?search=${object.name}">
+        <a href="./info pages/index.html?search=${object.name}">
         <div class="card">
         <h2 class="indent">${object.name}</h2>
         <p class="card-footer"> ${object.classification}</p>
@@ -43,7 +43,7 @@ export default class templates {
     }
     templatePlanets(object){
         return `
-        <a href="/info pages/index.html?search=${object.name}">
+        <a href="./info pages/index.html?search=${object.name}">
         <div class="card">
         <h2 class="indent">${object.name}</h2>
         <p class="card-footer"> ${object.population}</p>
