@@ -8,13 +8,24 @@ export default class  listTemplate{
         this.dataSource = dataSource;
         this.param = param;
         this.element = element;
+        this.pageNum = 0;
     }
 
     async intoIt(){
         const list = await this.dataSource.getData(this.param)
         console.log(list)
         toLocalStorage(this.param)
-        this.renderList(list[0]);
+        this.renderList(list[this.pageNum]);
+        document.querySelector("#next").addEventListener("click", this.getNextPage.bind(this))
+    }
+
+    async getNextPage(){
+        this.pageNum++;
+        if (this.element != "") {
+           this.element.innerHTML = "";
+        }
+        const list = await this.dataSource.getData(this.param)
+        this.renderList(list[this.pageNum]);
     }
     renderList(list){
         if (this.param === "people") {

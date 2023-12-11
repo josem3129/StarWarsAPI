@@ -48,7 +48,7 @@ footer{
     width: 25%;
     margin: auto 0 auto 0;
   }
-  #search, button {
+  #search, #submit {
     height: var(--height);
     font-family: var(--font-fam);
     border: 0;
@@ -67,7 +67,7 @@ footer{
     position: relative;
     border: 2px solid black;
   }
-  button {
+  #submit {
     display: none; 
     position: absolute;
     top: 0;
@@ -80,7 +80,7 @@ footer{
   input:not(:placeholder-shown) {
     border-radius: 10px;
     width: calc(90% - var(--btn-width));
-    + button {
+    + #submit {
       display: block;
     }
   }
@@ -197,3 +197,6 @@ p:not(:last-child) {
   justify-content: space-evenly;
   font-size: 25px;
 }
+ #next{
+  display: block;
+ }
