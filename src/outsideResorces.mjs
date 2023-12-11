@@ -1,3 +1,4 @@
+
 const url = "https://swapi.dev/api/"
 
 
@@ -6,15 +7,35 @@ export default class gerExternalAPI{
     async getData (category){
         const storage = localStorage.getItem(category)
         if ( storage === null) {
-            const response = await fetch(`${url}${category}`);
-            try {
-                const data = await response.json()
-                // const docs = data.docs
-                localStorage.setItem(`${category}`, JSON.stringify(data.results))
-                return data.results
-            } catch (error) {
-                
-            }
+            let count = "";
+            let next = "";
+            let pageNum = 0;
+            let objectArray = [];
+             while (count != undefined) {
+                pageNum++
+                let response;
+                if (next != null) {
+                    response = await fetch(`${url}${category}/?page=${pageNum}`);
+                    try {
+                        const data = await response.json()
+                        // const docs = data.docs
+                        console.log(data)
+                        if (count != undefined) {
+                            objectArray.push(data.results)
+                           }
+                           count = data.count;
+                           next = data.next;
+   
+                        
+                       } catch (error) {
+                           console.log("file not written")
+                       }
+                }else{
+                    count = undefined;
+                }
+                    
+                }
+                localStorage.setItem(`${category}`, JSON.stringify(objectArray))
             
         }else{
             return JSON.parse(storage)
@@ -92,7 +113,45 @@ export default class gerExternalAPI{
         return nameFound;
     }  
 
-    searchName(name){
+    searchName(object){
 
-    }
+        const category = ["people", "films", "vehicles", "species", "starships", "planets"]
+
+        var objectList = []; 
+
+        function filter(category){
+
+            let API = JSON.parse(localStorage.getItem(category));
+            if (API === null) {
+               console.log(`error unable to find info`)
+            }
+            API.filter((object)=>{
+                let objectUrl = object.url
+
+                if (typeof name == "string") {
+                    if(objectUrl == name){
+                        nameFound = object.name;
+                        if (nameFound === undefined) {
+                            nameFound = object.title;
+                        }
+                    }
+                } else {
+                    name.forEach(element => {
+                        if(objectUrl == element){
+                            const foundName = object.name
+                            if (foundName === undefined) {
+                            nameList.push(object.title);
+                            }
+                            nameList.push(object.name);
+                        }
+                    });
+                };
+               
+            })
+        }
+        
+        category.forEach((e)=>{
+            filter(e);
+        })
+    } 
 }

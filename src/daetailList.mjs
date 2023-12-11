@@ -14,7 +14,7 @@ export default class  listTemplate{
         const list = await this.dataSource.getData(this.param)
         console.log(list)
         toLocalStorage(this.param)
-        this.renderList(list);
+        this.renderList(list[0]);
     }
     renderList(list){
         if (this.param === "people") {
