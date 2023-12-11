@@ -13,10 +13,11 @@ export default class  listTemplate{
 
     async intoIt(){
         const list = await this.dataSource.getData(this.param)
-        console.log(list)
+        // console.log(list)
         toLocalStorage(this.param)
         this.renderList(list[this.pageNum]);
         document.querySelector("#next").addEventListener("click", this.getNextPage.bind(this))
+        
     }
 
     async getNextPage(){

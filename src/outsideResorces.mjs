@@ -82,26 +82,30 @@ export default class gerExternalAPI{
                console.log(`error unable to find info`)
             }
             API.filter((object)=>{
-                let objectUrl = object.url
-
-                if (typeof name == "string") {
-                    if(objectUrl == name){
-                        nameFound = object.name;
-                        if (nameFound === undefined) {
-                            nameFound = object.title;
-                        }
-                    }
-                } else {
-                    name.forEach(element => {
-                        if(objectUrl == element){
-                            const foundName = object.name
-                            if (foundName === undefined) {
-                            nameList.push(object.title);
+                object.forEach(element => {
+                    let objectUrl = element.url
+    
+                    if (typeof name == "string") {
+                        if(objectUrl == name){
+                            nameFound = element.name;
+                            if (nameFound === undefined) {
+                                nameFound = element.title;
                             }
-                            nameList.push(object.name);
                         }
-                    });
-                };
+                    } else {
+                        name.forEach(element => {
+                            if(objectUrl == element){
+                                const foundName = element.name
+                                if (foundName === undefined) {
+                                nameList.push(element.title);
+                                }
+                                nameList.push(element.name);
+                            }
+                        });
+                    };
+
+                });
+
                
             })
         }
@@ -113,45 +117,43 @@ export default class gerExternalAPI{
         return nameFound;
     }  
 
-    searchName(object){
+    searchName(search){
+        if (search!= "") {
+            
+            const category = ["people", "films", "vehicles", "species", "starships", "planets"]
+    
+            var objectList = []; 
+    
+            function filter(category){
+    
+                let API = JSON.parse(localStorage.getItem(category));
+                if (API === null) {
+                   console.log(`error unable to find info`)
+                }
+                API.filter((object)=>{
 
-        const category = ["people", "films", "vehicles", "species", "starships", "planets"]
-
-        var objectList = []; 
-
-        function filter(category){
-
-            let API = JSON.parse(localStorage.getItem(category));
-            if (API === null) {
-               console.log(`error unable to find info`)
-            }
-            API.filter((object)=>{
-                let objectUrl = object.url
-
-                if (typeof name == "string") {
-                    if(objectUrl == name){
-                        nameFound = object.name;
-                        if (nameFound === undefined) {
-                            nameFound = object.title;
+                    
+                    object.forEach(element => {
+                        let ObjectName = element.name;
+                        if (ObjectName === undefined) {
+                            ObjectName = element.title;
+                        } 
+                        if(ObjectName.toLowerCase().includes(search.toLowerCase())){
+                            objectList.push(element)
                         }
-                    }
-                } else {
-                    name.forEach(element => {
-                        if(objectUrl == element){
-                            const foundName = object.name
-                            if (foundName === undefined) {
-                            nameList.push(object.title);
-                            }
-                            nameList.push(object.name);
-                        }
-                    });
-                };
-               
-            })
-        }
         
-        category.forEach((e)=>{
-            filter(e);
-        })
+                       
+                    });
+                   
+                })
+            }
+            
+            category.forEach((e)=>{
+                filter(e);
+            })
+
+            return objectList;
+        }
     } 
+
 }
