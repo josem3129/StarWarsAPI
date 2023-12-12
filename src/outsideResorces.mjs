@@ -54,17 +54,20 @@ export default class gerExternalAPI{
         }
 
         API.filter((object)=>{
-            let ObjectName = object.name;
-
-            if (ObjectName === undefined) {
-                ObjectName = object.title;
-            } 
-
-            if(ObjectName.toLowerCase() == name.toLowerCase()){
-                nameInfo.push(object);
-            }else{
-                return {Name: `Not found`}
-            }
+            object.forEach(element => {
+                let ObjectName = element.name;
+    
+                if (ObjectName === undefined) {
+                    ObjectName = element.title;
+                } 
+    
+                if(ObjectName.toLowerCase() == name.toLowerCase()){
+                    nameInfo.push(object);
+                }else{
+                    return {Name: `Not found`}
+                }
+                
+            });
             
         })
         
@@ -139,6 +142,7 @@ export default class gerExternalAPI{
                             ObjectName = element.title;
                         } 
                         if(ObjectName.toLowerCase().includes(search.toLowerCase())){
+                            element.category = category;
                             objectList.push(element)
                         }
         
@@ -154,6 +158,45 @@ export default class gerExternalAPI{
 
             return objectList;
         }
+    } 
+
+    findSearch(name){
+        
+        const category = ["people", "films", "vehicles", "species", "starships", "planets"]
+
+        var objectList = []; 
+
+        function filter(category){
+
+            let API = JSON.parse(localStorage.getItem(category));
+            if (API === null) {
+                console.log(`error unable to find info`)
+            }
+            API.filter((object)=>{
+
+                
+                object.forEach(element => {
+                    let ObjectName = element.name;
+                    if (ObjectName === undefined) {
+                        ObjectName = element.title;
+                    } 
+                    if(ObjectName.toLowerCase() === (name.toLowerCase())){
+                        element.category = category;
+                        objectList.push(element)
+                    }
+    
+                    
+                });
+                
+            })
+        }
+        
+        category.forEach((e)=>{
+            filter(e);
+        })
+
+        return objectList;
+        
     } 
 
 }
