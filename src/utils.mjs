@@ -42,4 +42,26 @@ export function getLocalStorage(category){
     }
 }
 
-
+export function progressBar(){
+    let i = 0;
+    function move(){
+        if (i == 0) {
+            i = 1;
+            const element = document.getElementById("myBar");
+            const span = document.querySelector(".percentage");
+            let width = 1;
+            const id = setInterval(frame, 270);
+            function frame(){
+                if (width >= 100) {
+                    clearInterval(id)
+                    i = 0;
+                } else {
+                    width++
+                    element.style.width = width + "%"
+                    span.innerHTML = `${width}%`
+                }
+            }
+        }
+    }
+    move();
+}
