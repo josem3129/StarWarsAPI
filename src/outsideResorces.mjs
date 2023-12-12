@@ -40,7 +40,7 @@ export default class gerExternalAPI{
         }else{
             return JSON.parse(storage)
         }
-        
+         
     }
 
     getSpanData(name, category){
@@ -62,9 +62,7 @@ export default class gerExternalAPI{
                 } 
     
                 if(ObjectName.toLowerCase() == name.toLowerCase()){
-                    nameInfo.push(object);
-                }else{
-                    return {Name: `Not found`}
+                    nameInfo.push(element);
                 }
                 
             });

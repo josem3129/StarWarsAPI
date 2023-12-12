@@ -82,11 +82,12 @@ export default class infoTemplates {
         <p class="card-footer">crew: ${object.crew}</p>
         </div>
         <div class = "secondPart">
-        <p class="card-footer">Passengers: ${getName(object.passengers)}</p>
-        <p class="card-footer">Max Speed: ${getName(object.max_atmosphering_speed)}</p>
-        <p class="card-footer">species: ${getName(object.cargo_capacity)}</p>
-        <p class="card-footer">Star Ships: ${getName(object.consumables)}</p>
+        <p class="card-footer">Passengers: ${object.passengers}</p>
+        <p class="card-footer">Max Speed: ${object.max_atmosphering_speed}</p>
+        <p class="card-footer">species: ${object.cargo_capacity}</p>
+        <p class="card-footer">Star Ships: ${object.consumables}</p>
         <p class="card-footer">Vehicles: ${getName(object.films)}</p>
+        <p class="card-footer">Vehicles: ${getName(object.pilots)}</p>
         </div>
         </div>`
     }
