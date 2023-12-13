@@ -19,7 +19,7 @@ export default class searchList{
                     if (name == undefined) {
                         name = element.title;
                     }
-                    list.push(`<a href="../foundSearch/index.html?search=${name}">
+                    list.push(`<a href="./foundSearch/index.html?search=${name}">
                     <div class="result">
                     <p>${name}</p>
                     </div>
