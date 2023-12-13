@@ -34,7 +34,9 @@ export default class searchList{
             } 
             mainElement.innerHTML = "";
             for (let i = 0; i < 3; i++) {
-                mainElement.innerHTML += list[i];
+                if (list[i] != undefined) {
+                    mainElement.innerHTML += list[i];
+                }
                 
             }
             list = [];
