@@ -19,6 +19,7 @@ export default class  listTemplate{
         this.length = list.length;
         if (this.length <= 1) {
             document.querySelector(".buttonDiv").style = "display: none"
+            document.querySelector(".nextTwo").style = "display: none"
         }
         document.querySelector(".pageNumNext").textContent = `Page- ${this.pageNum + 1}/${this.length}`
         document.querySelector(".nextPre").style = "display: none"
